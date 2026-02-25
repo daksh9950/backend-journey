@@ -1,0 +1,46 @@
+import axios from 'axios'
+import React, { useState } from 'react'
+
+const App = () => {
+  const [notes,setnotes] = useState([
+    {
+      title: 'title 1',
+      description : 'test description 1'
+    },
+    {
+      title: 'title 2',
+      description : 'test description 2'
+    },
+    {
+      title: 'title 3',
+      description : 'test description 3'
+    },
+    {
+      title: 'title 4',
+      description : 'test description 4'
+    }
+  ])
+
+  axios.get("http://localhost:3000/notes")
+   .then((res)=>{
+        console.log(res.data)
+   })
+  return (
+    <>
+     <div className='notes' >
+      {
+        notes.map(note =>{
+          return <div className='note' >
+                <h1>{note.title}</h1>
+                <p>{note.description}</p>
+          </div>
+        })
+      }
+        
+        
+     </div>
+    </>
+  )
+}
+
+export default App
