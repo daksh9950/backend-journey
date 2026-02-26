@@ -2,9 +2,15 @@
 
 const express = require('express')
 const noteMOdel = require('./MODEL/note.model')
+const cors = require('cors')
+const path = require('path')
 
 const app = express()
+app.use(cors())
 app.use(express.json())
+app.use(express.static('./public'))
+
+const notes = []
 
 /**
  * POST 
@@ -31,7 +37,7 @@ app.post('/notes',async(req,res)=>{
 app.get('/notes',async (req,res)=>{
       const notes = await noteMOdel.find()
 
-      res.status(201)({
+      res.status(201).json({
         message: 'note fetched sucessfully',
         notes
       })
@@ -64,6 +70,10 @@ app.patch('/notes/:id',async(req,res)=>{
      res.status(200).json({
         message: 'Note updated sucessfully'
      })
+})
+
+app.use('*name',(req,res)=>{
+    res.sendFile(path.join(__dirname,'..','/public/index.html'))
 })
 
 

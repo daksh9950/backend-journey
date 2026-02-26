@@ -2,7 +2,7 @@
 
 const app = require('./src/app')
 require('dotenv').config()
-const cors = require('cors')
+
 
 
 

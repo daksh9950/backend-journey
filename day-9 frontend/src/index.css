@@ -24,11 +24,21 @@ html{
   margin: 10px;
   padding-block: 1rem;
   padding-inline: 3rem;
+  flex-wrap: wrap;
 }
 
 .note{
+  min-width: 10rem;
   background-color: #494949;
   padding: 1rem;
   border-radius: 0.7rem;
-  
+
 }
+
+.create-all-notes{
+    display: flex;
+    padding-inline: 3.5rem;
+    padding-block: 1rem;
+    gap: 1rem;
+}
+
